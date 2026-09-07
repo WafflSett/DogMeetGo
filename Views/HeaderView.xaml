@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DogMeetGo.Views.HeaderView">
+    <Grid>
+        <BoxView Color="Black"></BoxView>
+        <VerticalStackLayout>
+            <Label Text="DogMeetGo" Margin="10, 20, 10, 10" FontSize="40" TextColor="Gold" HorizontalOptions="Center" FontAttributes="Bold"/>
+            <Label Text="{Binding Title}" TextColor="Gold" HorizontalOptions="Center" FontSize="18" TextTransform="Uppercase"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentView>
