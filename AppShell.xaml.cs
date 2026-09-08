@@ -8,9 +8,7 @@ namespace DogMeetGo
         {
             InitializeComponent();
             Routing.RegisterRoute("walkdetails", typeof(WalkDetailsPage));
-            Routing.RegisterRoute("createdog", typeof(CreateDogPage));
             Routing.RegisterRoute("createwalk", typeof(CreateWalkPage));
-            Routing.RegisterRoute("createprofile", typeof(CreateProfilePage));
         }
     }
 }

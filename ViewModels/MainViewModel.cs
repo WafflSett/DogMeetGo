@@ -23,7 +23,7 @@ namespace DogMeetGo.ViewModels
         [RelayCommand]
         private async Task SignUp()
         {
-            await Shell.Current.GoToAsync("//home");
+            await Shell.Current.GoToAsync("//createprofile");
 
         }
 
