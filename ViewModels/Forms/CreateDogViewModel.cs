@@ -4,37 +4,49 @@ using DogMeetGo.Classes;
 using DogMeetGo.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DogMeetGo.ViewModels.Forms
 {
-    public partial class CreateProfileViewModel : ObservableObject
+    public partial class CreateDogViewModel : ObservableObject
     {
         [ObservableProperty]
         public string name = "";
 
         [ObservableProperty]
-        public string city = "";
+        public ObservableCollection<string> selectedBreeds = [];
 
         [ObservableProperty]
-        public string about = "";
+        public string gender = "";
+
+        [ObservableProperty]
+        public DateOnly date = DateOnly.FromDateTime(DateTime.Now);
+
+        [ObservableProperty]
+        public ObservableCollection<string> breeds = new ObservableCollection<string>();
+
+        [ObservableProperty]
+        public ObservableCollection<string> genders = new ObservableCollection<string>();
 
         [ObservableProperty]
         public string imgPath = "add_image.png";
 
         private FileResult? icon;
 
-        public CreateProfileViewModel()
-        {
-            UserData.IsOnboarding = true;
-        }
+        public bool IsSkipVisible;
 
+        public CreateDogViewModel()
+        {
+            Breeds = ["A", "B", "C", "D", "E"];
+            Genders = ["Male", "Female"];
+            UserData.IsOnboarding = IsSkipVisible;
+        }
 
         [RelayCommand]
         private async Task Continue()
         {
             //off while debugging
-
             //if (!InputCheck())
             //{
             //    await Application.Current!.Windows[0]!.Page!.DisplayAlertAsync("Missing info", "Please fill out all input fields!", "Ok");
@@ -43,19 +55,23 @@ namespace DogMeetGo.ViewModels.Forms
             //{
 
                 // add API call here
-                await Shell.Current.GoToAsync("//createdog");
 
+                await Shell.Current.GoToAsync("//home");
             //}
+        }
+        [RelayCommand]
+        private async Task Skip()
+        {
+            await Shell.Current.GoToAsync("//home");
         }
 
         private bool InputCheck()
         {
-
             if (string.IsNullOrWhiteSpace(Name))
                 return false;
-            if (string.IsNullOrWhiteSpace(City))
+            if (string.IsNullOrWhiteSpace(Gender))
                 return false;
-            if (string.IsNullOrWhiteSpace(About))
+            if (SelectedBreeds.Count <= 0)
                 return false;
             if (icon == null)
                 return false;
@@ -93,6 +109,5 @@ namespace DogMeetGo.ViewModels.Forms
             }
         }
 
-        
     }
 }

@@ -8,7 +8,51 @@
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="Black" StatusBarStyle="LightContent"/>
     </ContentPage.Behaviors>
-    <Grid RowDefinitions="*,7*">
+    <Grid RowDefinitions="*,5*">
         <views:HeaderView Title="Add new dog"/>
+        <Grid Grid.Row="1" RowDefinitions="2*,*,*,*,*,*,*" Margin="10">
+            <Border Background="White" StrokeShape="RoundRectangle 100" Padding="10,5" VerticalOptions="Center" HeightRequest="100" WidthRequest="100">
+                <ImageButton Source="{Binding ImgPath}" Command="{Binding AddImageCommand}"/>
+            </Border>
+            <VerticalStackLayout Grid.Row="1">
+                <Label Text="Name" HorizontalOptions="Center"/>
+                <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
+                    <Entry Placeholder="Enter your dog's name" VerticalOptions="Center"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2">
+                <Label Text="Breed" HorizontalOptions="Center"/>
+                <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
+                    <views:PickerView ItemsSource="{Binding Breeds}"/>
+                </Border>
+                <Label Text="My dog's breed is not here..." TextDecorations="Underline" FontSize="14"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3">
+                <Label Text="Gender" HorizontalOptions="Center"/>
+                <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
+                    <Picker ItemsSource="{Binding Genders}" SelectedItem="{Binding Gender}"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="4">
+                <Label Text="Date of Birth" HorizontalOptions="Center"/>
+                <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
+                    <DatePicker Date="{Binding Date}"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="5">
+                <Label Text="Weight" HorizontalOptions="Center"/>
+                <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
+                    <Entry Placeholder="Enter weight (kg)"/>
+                </Border>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="6" >
+                <Button Text="Add dog" Command="{Binding ContinueCommand}" VerticalOptions="Center" HorizontalOptions="Center" Padding="70,15"/>
+                <Label Text="Skip for now..." IsVisible="{Binding IsSkipVisible}" TextDecorations="Underline" HorizontalOptions="Center" VerticalOptions="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SkipCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>
