@@ -23,8 +23,24 @@ namespace DogMeetGo.ViewModels
         [RelayCommand]
         private async Task SignUp()
         {
-            await Shell.Current.GoToAsync("//createprofile");
+            var err = InputCheck();
+            if (err!=null)
+            {
+                await Application.Current!.Windows[0]!.Page!.DisplayAlertAsync("Empty fields", err, "Ok");
+            }
+            else
+            {
+                await Shell.Current.GoToAsync("//createprofile");
+            }
+        }
 
+        private string? InputCheck()
+        {
+            if (string.IsNullOrWhiteSpace(Email))
+                return "Please enter an email address!";
+            if (string.IsNullOrWhiteSpace(Password))
+                return "Please enter a password!";
+            return null;
         }
 
         [RelayCommand]

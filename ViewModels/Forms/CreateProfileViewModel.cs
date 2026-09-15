@@ -34,32 +34,29 @@ namespace DogMeetGo.ViewModels.Forms
         private async Task Continue()
         {
             //off while debugging
-
-            //if (!InputCheck())
-            //{
-            //    await Application.Current!.Windows[0]!.Page!.DisplayAlertAsync("Missing info", "Please fill out all input fields!", "Ok");
-            //}
-            //else
-            //{
+            var input = InputCheck();
+            if (input != null)
+            {
+                await Application.Current!.Windows[0]!.Page!.DisplayAlertAsync("Empty fields", input, "Ok");
+            }
+            else
+            {
 
                 // add API call here
                 await Shell.Current.GoToAsync("//createdog");
-
-            //}
+            }
         }
 
-        private bool InputCheck()
+        private string? InputCheck()
         {
 
             if (string.IsNullOrWhiteSpace(Name))
-                return false;
+                return "Please enter your name!";
             if (string.IsNullOrWhiteSpace(City))
-                return false;
-            if (string.IsNullOrWhiteSpace(About))
-                return false;
+                return "Please enter your city/neighbourhood";
             if (icon == null)
-                return false;
-            return true;
+                icon = new FileResult("user.png");
+            return null;
         }
 
         [RelayCommand]

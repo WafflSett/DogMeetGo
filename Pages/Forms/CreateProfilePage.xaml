@@ -19,13 +19,13 @@
                 
             </Border>-->
             <Border Grid.Row="1" Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                <Entry Placeholder="Enter your name" VerticalOptions="Center"/>
+                <Entry Placeholder="Enter your name" VerticalOptions="Center" Text="{Binding Name}"/>
             </Border>
             <Border Grid.Row="2" Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                <Entry Placeholder="City, Neighbourhood" VerticalOptions="Center"/>
+                <Entry Placeholder="City, Neighbourhood" VerticalOptions="Center" Text="{Binding City}"/>
             </Border>
             <Border Grid.Row="3" Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                <Entry Placeholder="Tell other dog owners a little bit about yourself" VerticalOptions="Center"/>
+                <Entry Placeholder="Tell other dog owners a little bit about yourself" VerticalOptions="Center" Text="{Binding About}"/>
             </Border>
 
             <Button Grid.Row="4" Text="Create Profile" Padding="50, 10" VerticalOptions="Center" Command="{Binding ContinueCommand}"/>

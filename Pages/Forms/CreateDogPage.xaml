@@ -17,21 +17,21 @@
             <VerticalStackLayout Grid.Row="1">
                 <Label Text="Name" HorizontalOptions="Center"/>
                 <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                    <Entry Placeholder="Enter your dog's name" VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your dog's name" VerticalOptions="Center" Text="{Binding Name}"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="2">
                 <Label Text="Breed" HorizontalOptions="Center"/>
                 <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                    <views:PickerView ItemsSource="{Binding Breeds}"/>
+                    <Entry Placeholder="Enter your dog's breeds separated by a comma (,)" VerticalOptions="Center" Text="{Binding BreedStr}"/>
                 </Border>
-                <Label Text="My dog's breed is not here..." TextDecorations="Underline" FontSize="14"/>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="3">
-                <Label Text="Gender" HorizontalOptions="Center"/>
-                <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                    <Picker ItemsSource="{Binding Genders}" SelectedItem="{Binding Gender}"/>
-                </Border>
+                <Label Text="Sex" HorizontalOptions="Center"/>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="50" RadioButtonGroup.GroupName="GenderGroup" RadioButtonGroup.SelectedValue="{Binding Gender}">
+                    <RadioButton Value="0" Content="Male"/>
+                    <RadioButton Value="1" Content="Female"/>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="4">
                 <Label Text="Date of Birth" HorizontalOptions="Center"/>
@@ -42,7 +42,7 @@
             <VerticalStackLayout Grid.Row="5">
                 <Label Text="Weight" HorizontalOptions="Center"/>
                 <Border Background="White" StrokeShape="RoundRectangle 30" Padding="10, 5" VerticalOptions="Center">
-                    <Entry Placeholder="Enter weight (kg)"/>
+                    <Entry Placeholder="Enter weight (kg)" Text="{Binding Weight}"/>
                 </Border>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="6" >
